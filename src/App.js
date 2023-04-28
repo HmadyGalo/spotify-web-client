@@ -46,20 +46,21 @@ function App() {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization' : 'Bearer' + accessToken
+      'Authorization' : 'Bearer ' + accessToken
     },
   }
-  const artistID = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + '&type=artist' , searchParameters)
+  var artistID = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + '&type=artist' , searchParameters)
   .then(response  => response.json())
-  .then(data => {return data.artist.items[0].id});
+  .then(data => { return data.artists.items[0].id });
 
   console.log("el id es " + artistID );
 
   //Get request with artist Id grab all albums from  that artist
- const returnedAlbums = await fetch('https://api.spotify.com/v1/artists/' + artistID +'/albums' +'?include_groups=album&market=US&limit=25', searchParameters)
+ var returnedAlbums = await fetch('https://api.spotify.com/v1/artists/' + artistID + '/albums' + '?include_groups=album&market=US&limit=25', searchParameters)
    .then(response  => response.json())
-   .then(data => { console.log(data)
-    setAlbums(data.items)
+   .then(data => { 
+    console.log(data)
+   // setAlbums(data.items)
   });
 
   //Display those albums to the user
