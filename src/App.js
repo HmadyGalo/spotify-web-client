@@ -39,7 +39,7 @@ function App() {
 
   async function search() 
    {
-    console.log("Search For" + searchInput);
+    console.log("Search For" + searchInput+ "TOKen"+ accessToken);
   //Get request using search to get the Artist ID
 //parametros de lo que queremos recibir
   var searchParameters ={
@@ -103,6 +103,8 @@ function App() {
              <Card.Img src = {album.images[0].url} />
              <Card.Body> 
                <Card.Title>{album.name}</Card.Title>
+               <Card.Text>Total Tracks: {album.total_tracks}</Card.Text>
+               <Card.Text>Release Date: {album.release_date}</Card.Text>
               </Card.Body>
             </Card>
 
