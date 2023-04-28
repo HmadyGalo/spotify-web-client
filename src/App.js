@@ -28,7 +28,7 @@ function App() {
  
    fetch('https://accounts.spotify.com/api/token', authParameters)
   .then(result  => result.json())
-  .then(data => console.log(data.access_token));
+  .then(data => setAccessToken(data.access_token));
  
    
 
@@ -60,12 +60,12 @@ function App() {
    .then(response  => response.json())
    .then(data => { 
     console.log(data)
-   // setAlbums(data.items)
+   setAlbums(data.items)
   });
 
   //Display those albums to the user
 
-  console.log(albums);
+  console.log(returnedAlbums);
     
     
   }
